@@ -20,6 +20,11 @@ class TestFizzBuzz(unittest.TestCase):
         # Pour 15, il est divisible par 3 et par 5, et contient le chiffre 5 (mais pas 3) :
         # On attend "Fizz" (divisible par 3) + "Buzz" (divisible par 5) + "Buzz" (contient le 5) = "FizzBuzzBuzz"
         self.assertEqual(fizzbuzz(15), "FizzBuzzBuzz")
+    
+    def test_intentional_failure(self):
+        # Ce test est volontairement erroné pour vérifier que l'échec des tests bloque le merge.
+        self.fail("Test échoué délibérément")
+
 
 if __name__ == '__main__':
     unittest.main()
