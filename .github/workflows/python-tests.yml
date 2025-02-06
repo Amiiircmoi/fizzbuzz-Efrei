@@ -1,0 +1,33 @@
+name: Tests Python
+
+# Déclenche le workflow à chaque push ou pull request sur la branche principale (main)
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Récupère le code source de votre dépôt
+      - uses: actions/checkout@v2
+
+      # Configure la version de Python (ici 3.x, vous pouvez spécifier une version précise)
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      # Installe les dépendances si vous en avez (par exemple via un fichier requirements.txt)
+      # Si vous n'en avez pas, vous pouvez ignorer cette étape ou l'adapter
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # Exécute les tests avec unittest
+      - name: Run tests
+        run: python -m unittest discover
