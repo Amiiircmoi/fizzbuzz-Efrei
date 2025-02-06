@@ -13,11 +13,11 @@ jobs:
 
     steps:
       # Récupère le code source de votre dépôt
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       # Configure la version de Python (ici 3.x, vous pouvez spécifier une version précise)
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
@@ -43,7 +43,7 @@ jobs:
         run: coverage html
     
       - name: Upload Coverage Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: htmlcov/
